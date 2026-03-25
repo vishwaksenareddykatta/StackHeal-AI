@@ -1,0 +1,626 @@
+{
+  "version": "1.0.0",
+  "description": "Predefined Python error dataset for fast local detection — no AI call needed for known errors",
+  "errors": {
+    "ModuleNotFoundError": {
+      "category": "Dependency Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "No module named",
+        "ModuleNotFoundError",
+        "cannot import name"
+      ],
+      "root_cause_template": "The module '{module}' is not installed or not on the Python path. Run: pip install {module}",
+      "fix_template": "pip install {module}",
+      "simple": "A required library is missing. You need to install it first.",
+      "detailed": "Python cannot find the specified module. It's either not installed (use pip install), not in the PYTHONPATH, or the import name is misspelled.",
+      "common_modules": {
+        "STT": "SpeechRecognition or a custom module — check if it exists in your project",
+        "testttss": "A custom TTS module — check if this file exists in your project directory",
+        "pandas": "pip install pandas",
+        "numpy": "pip install numpy",
+        "requests": "pip install requests",
+        "fastapi": "pip install fastapi",
+        "uvicorn": "pip install uvicorn",
+        "groq": "pip install groq",
+        "dotenv": "pip install python-dotenv",
+        "sklearn": "pip install scikit-learn",
+        "torch": "pip install torch",
+        "cv2": "pip install opencv-python",
+        "PIL": "pip install Pillow",
+        "flask": "pip install flask",
+        "sqlalchemy": "pip install sqlalchemy",
+        "pydantic": "pip install pydantic",
+        "aiohttp": "pip install aiohttp",
+        "bs4": "pip install beautifulsoup4",
+        "selenium": "pip install selenium",
+        "pyaudio": "pip install pyaudio",
+        "speech_recognition": "pip install SpeechRecognition",
+        "pyttsx3": "pip install pyttsx3",
+        "openai": "pip install openai",
+        "anthropic": "pip install anthropic",
+        "boto3": "pip install boto3",
+        "psycopg2": "pip install psycopg2-binary",
+        "pymongo": "pip install pymongo",
+        "redis": "pip install redis",
+        "celery": "pip install celery",
+        "paramiko": "pip install paramiko",
+        "cryptography": "pip install cryptography",
+        "jwt": "pip install PyJWT",
+        "yaml": "pip install pyyaml",
+        "toml": "pip install toml",
+        "lxml": "pip install lxml",
+        "httpx": "pip install httpx",
+        "starlette": "pip install starlette"
+      }
+    },
+    "ImportError": {
+      "category": "Dependency Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "ImportError",
+        "cannot import name",
+        "DLL load failed"
+      ],
+      "root_cause_template": "Cannot import '{name}' from '{module}'. The name may not exist in that module, or the module version is incompatible.",
+      "simple": "Something you're trying to import doesn't exist or isn't available.",
+      "detailed": "The import failed — either the name doesn't exist in the target module, the module has a version mismatch, or a DLL/shared library dependency is missing."
+    },
+    "SyntaxError": {
+      "category": "Syntax Error",
+      "severity": "Critical",
+      "language": "Python",
+      "patterns": [
+        "SyntaxError",
+        "invalid syntax",
+        "unexpected EOF",
+        "unexpected indent",
+        "expected ':'",
+        "unexpected token"
+      ],
+      "root_cause_template": "Python could not parse the code at line {line}. A character, keyword, or structure is invalid.",
+      "simple": "Your code has a typo or punctuation mistake that Python can't understand.",
+      "detailed": "Python's parser encountered a token it didn't expect. Common causes: missing colon after def/if/for/while, mismatched brackets, invalid indentation, or using Python 2 syntax in Python 3."
+    },
+    "IndentationError": {
+      "category": "Syntax Error",
+      "severity": "Critical",
+      "language": "Python",
+      "patterns": [
+        "IndentationError",
+        "unexpected indent",
+        "unindent does not match",
+        "expected an indented block"
+      ],
+      "root_cause_template": "Indentation is inconsistent or wrong at line {line}. Python uses indentation to define code blocks.",
+      "simple": "Your code's spacing/indentation is wrong. Make sure you use consistent spaces or tabs.",
+      "detailed": "Python uses indentation (spaces or tabs) to define code blocks. Mixing tabs and spaces, or using wrong indentation levels, causes this error."
+    },
+    "TabError": {
+      "category": "Syntax Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": ["TabError", "inconsistent use of tabs and spaces"],
+      "root_cause_template": "The file mixes tabs and spaces for indentation.",
+      "simple": "Your code mixes tabs and spaces. Pick one and stick to it.",
+      "detailed": "Python 3 disallows mixing tabs and spaces in indentation. Use 'expand tabs' in your editor to convert all tabs to spaces."
+    },
+    "TypeError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "TypeError",
+        "takes .* positional argument",
+        "unsupported operand type",
+        "is not callable",
+        "object is not subscriptable",
+        "argument of type .* is not iterable",
+        "must be .* not"
+      ],
+      "root_cause_template": "A function or operation received a value of the wrong type.",
+      "simple": "You passed the wrong type of value to a function or operation.",
+      "detailed": "Python received a value of an incompatible type. Common causes: calling a non-callable, wrong number of arguments, operating on None, or subscripting a non-subscriptable object."
+    },
+    "ValueError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "ValueError",
+        "invalid literal",
+        "could not convert",
+        "math domain error",
+        "not enough values to unpack",
+        "too many values to unpack"
+      ],
+      "root_cause_template": "A function received an argument of the right type but an invalid value.",
+      "simple": "A value you provided is the right type but makes no sense for that operation.",
+      "detailed": "The value passed to a function is technically the right type but logically invalid — e.g., converting non-numeric string to int, sqrt of negative, or mismatched unpacking."
+    },
+    "AttributeError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "AttributeError",
+        "has no attribute",
+        "object has no attribute",
+        "NoneType.*has no attribute"
+      ],
+      "root_cause_template": "Accessing attribute '{attr}' on an object that doesn't have it — often because the object is None.",
+      "simple": "You tried to access something that doesn't exist on that object. It might be None.",
+      "detailed": "The object doesn't have the attribute you're accessing. Frequent cause: a function returned None and you accessed a property on it without checking."
+    },
+    "NameError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "NameError",
+        "name .* is not defined",
+        "free variable .* referenced before assignment"
+      ],
+      "root_cause_template": "Variable '{name}' is used before being defined, or is out of scope.",
+      "simple": "You used a variable that hasn't been created yet.",
+      "detailed": "Python can't find a variable with that name in the current scope. It was either never defined, defined inside a different scope, or has a typo."
+    },
+    "KeyError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "KeyError",
+        "key .* not found"
+      ],
+      "root_cause_template": "Key '{key}' does not exist in the dictionary.",
+      "simple": "You tried to access a dictionary key that doesn't exist.",
+      "detailed": "The key you're accessing is not in the dictionary. Use .get(key, default) to avoid this, or check with 'key in dict' before accessing."
+    },
+    "IndexError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "IndexError",
+        "list index out of range",
+        "tuple index out of range",
+        "string index out of range"
+      ],
+      "root_cause_template": "Accessing index {index} on a sequence that only has {length} elements.",
+      "simple": "You tried to access an item at a position that doesn't exist in the list.",
+      "detailed": "The index is beyond the bounds of the list/tuple/string. Check the length before accessing, or use negative indices correctly."
+    },
+    "ZeroDivisionError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "ZeroDivisionError",
+        "division by zero",
+        "modulo by zero",
+        "float division by zero"
+      ],
+      "root_cause_template": "Division or modulo operation where the divisor is zero.",
+      "simple": "You tried to divide a number by zero, which is mathematically undefined.",
+      "detailed": "The divisor evaluates to zero at runtime. Add a guard: 'if b != 0' before dividing, or use a try/except ZeroDivisionError block."
+    },
+    "FileNotFoundError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "FileNotFoundError",
+        "No such file or directory",
+        "cannot find the file",
+        "errno 2"
+      ],
+      "root_cause_template": "The file or directory '{path}' does not exist at the specified path.",
+      "simple": "The file you're trying to open doesn't exist.",
+      "detailed": "Python looked for the file at the specified path and it wasn't there. Check the path is correct relative to your working directory, or use os.path.exists() to check first."
+    },
+    "PermissionError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "PermissionError",
+        "Permission denied",
+        "Access is denied",
+        "errno 13"
+      ],
+      "root_cause_template": "Insufficient permissions to access '{path}'.",
+      "simple": "Your program doesn't have permission to access that file or directory.",
+      "detailed": "The OS denied access to the file/directory. Run with elevated permissions, fix file ownership, or choose a different path."
+    },
+    "OSError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "OSError",
+        "IOError",
+        "WinError",
+        "errno"
+      ],
+      "root_cause_template": "Operating system reported an error during I/O or system operation.",
+      "simple": "Your program had trouble interacting with the operating system.",
+      "detailed": "An OS-level error occurred — file I/O, network, or system call failure. Check the errno code for specifics."
+    },
+    "RecursionError": {
+      "category": "Runtime Error",
+      "severity": "Critical",
+      "language": "Python",
+      "patterns": [
+        "RecursionError",
+        "maximum recursion depth exceeded",
+        "recursion limit"
+      ],
+      "root_cause_template": "A function is calling itself indefinitely without a proper base case.",
+      "simple": "A function kept calling itself too many times and Python stopped it.",
+      "detailed": "Python hit its recursion limit (default 1000). Add a proper base case to your recursive function, or use sys.setrecursionlimit() if you genuinely need deep recursion."
+    },
+    "MemoryError": {
+      "category": "Runtime Error",
+      "severity": "Critical",
+      "language": "Python",
+      "patterns": [
+        "MemoryError",
+        "cannot allocate memory",
+        "out of memory"
+      ],
+      "root_cause_template": "The program tried to allocate more memory than the system can provide.",
+      "simple": "Your program ran out of memory.",
+      "detailed": "Python tried to allocate too much memory. Common causes: loading a huge file at once, infinite list growth, or inefficient data structures."
+    },
+    "TimeoutError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "TimeoutError",
+        "timed out",
+        "timeout expired",
+        "ReadTimeoutError",
+        "ConnectTimeoutError"
+      ],
+      "root_cause_template": "An operation exceeded its time limit.",
+      "simple": "Something took too long and the program gave up waiting.",
+      "detailed": "A network call, subprocess, or blocking operation exceeded its timeout. Increase the timeout, check network connectivity, or optimize the slow operation."
+    },
+    "ConnectionError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "ConnectionError",
+        "ConnectionRefusedError",
+        "ConnectionResetError",
+        "Connection refused",
+        "Connection reset",
+        "BrokenPipeError"
+      ],
+      "root_cause_template": "Could not establish or maintain a network connection to the target.",
+      "simple": "Your program couldn't connect to the server.",
+      "detailed": "A network connection failed. The server may be down, the address is wrong, a firewall is blocking the connection, or the server closed it unexpectedly."
+    },
+    "JSONDecodeError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "JSONDecodeError",
+        "json.decoder.JSONDecodeError",
+        "Expecting value",
+        "Expecting property name",
+        "Unterminated string"
+      ],
+      "root_cause_template": "The string passed to json.loads() is not valid JSON.",
+      "simple": "The text you tried to parse as JSON is not valid JSON.",
+      "detailed": "json.loads() received a malformed JSON string. Check the source: it may be an error response, truncated data, or a string with single quotes instead of double."
+    },
+    "UnicodeDecodeError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "UnicodeDecodeError",
+        "codec can't decode",
+        "invalid start byte",
+        "invalid continuation byte"
+      ],
+      "root_cause_template": "Cannot decode bytes using '{encoding}' — the file may have a different encoding.",
+      "simple": "The file contains characters your program can't read with the current encoding.",
+      "detailed": "Python tried to decode bytes using the wrong encoding (usually UTF-8 vs latin-1). Open the file with encoding='utf-8', encoding='latin-1', or errors='ignore'."
+    },
+    "UnicodeEncodeError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "UnicodeEncodeError",
+        "codec can't encode",
+        "character maps to undefined"
+      ],
+      "root_cause_template": "Cannot encode the string to '{encoding}' — it contains characters outside that encoding's range.",
+      "simple": "Your string has special characters that can't be saved with the current encoding.",
+      "detailed": "The string contains characters that can't be represented in the target encoding. Use encode('utf-8', errors='replace') or ensure your output stream supports Unicode."
+    },
+    "StopIteration": {
+      "category": "Runtime Error",
+      "severity": "Low",
+      "language": "Python",
+      "patterns": [
+        "StopIteration",
+        "generator already executing"
+      ],
+      "root_cause_template": "Called next() on an exhausted iterator or generator.",
+      "simple": "You tried to get the next item from something that has no more items.",
+      "detailed": "next() was called on an exhausted iterator. Use a for loop instead, or wrap in try/except StopIteration."
+    },
+    "AssertionError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "AssertionError"
+      ],
+      "root_cause_template": "An assert statement evaluated to False.",
+      "simple": "A safety check in the code failed.",
+      "detailed": "An assert condition returned False. This usually indicates a contract violation — the program's state didn't match what the developer expected."
+    },
+    "NotImplementedError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "NotImplementedError"
+      ],
+      "root_cause_template": "A method was called that is declared but not yet implemented.",
+      "simple": "You called a method that hasn't been written yet.",
+      "detailed": "The method raises NotImplementedError intentionally, indicating it's an abstract method that subclasses must implement."
+    },
+    "RuntimeError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "RuntimeError",
+        "dictionary changed size during iteration",
+        "set changed size during iteration",
+        "can't start new thread",
+        "maximum recursion"
+      ],
+      "root_cause_template": "A generic runtime error occurred — see the message for specifics.",
+      "simple": "Something went wrong while your program was running.",
+      "detailed": "A general runtime condition failed. Common causes: modifying a dict/set while iterating it, thread limit reached, or re-entrant code."
+    },
+    "OverflowError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "OverflowError",
+        "int too large",
+        "math range error",
+        "result too large"
+      ],
+      "root_cause_template": "A numeric value exceeded the maximum representable size.",
+      "simple": "A number got too big for Python to handle.",
+      "detailed": "A float or integer exceeded representable limits. For floats this happens with exp() or similar — use decimal.Decimal for arbitrary precision."
+    },
+    "SystemExit": {
+      "category": "Runtime Error",
+      "severity": "Low",
+      "language": "Python",
+      "patterns": [
+        "SystemExit"
+      ],
+      "root_cause_template": "sys.exit() was called, terminating the program.",
+      "simple": "The program called exit() intentionally.",
+      "detailed": "sys.exit() was invoked. If unexpected, search for sys.exit() calls or exit() calls in the code. Catch with except SystemExit if you need to clean up."
+    },
+    "KeyboardInterrupt": {
+      "category": "Runtime Error",
+      "severity": "Low",
+      "language": "Python",
+      "patterns": [
+        "KeyboardInterrupt"
+      ],
+      "root_cause_template": "User pressed Ctrl+C to interrupt the running program.",
+      "simple": "You (or something) pressed Ctrl+C to stop the program.",
+      "detailed": "The user interrupted the program via keyboard signal. Handle with try/except KeyboardInterrupt if you need graceful shutdown."
+    },
+    "EOFError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "EOFError",
+        "EOF when reading",
+        "unexpected end of file"
+      ],
+      "root_cause_template": "input() or read() hit end-of-file with no data to return.",
+      "simple": "The program expected more input but there was none left.",
+      "detailed": "input() reached EOF (end of input stream). This happens when running scripts with piped stdin or in non-interactive environments."
+    },
+    "IsADirectoryError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "IsADirectoryError",
+        "is a directory"
+      ],
+      "root_cause_template": "Tried to open a directory path as if it were a file.",
+      "simple": "You tried to open a folder as a file.",
+      "detailed": "The path points to a directory, not a file. Use os.listdir() or pathlib to work with directories."
+    },
+    "NotADirectoryError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "NotADirectoryError",
+        "Not a directory"
+      ],
+      "root_cause_template": "A path component in the given path is a file, not a directory.",
+      "simple": "Part of the path you're using is a file, not a folder.",
+      "detailed": "os.listdir() or os.chdir() was called on a path where one component is actually a file."
+    },
+    "BlockingIOError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "BlockingIOError",
+        "Resource temporarily unavailable",
+        "errno 11",
+        "EAGAIN",
+        "EWOULDBLOCK"
+      ],
+      "root_cause_template": "A non-blocking I/O operation would have blocked.",
+      "simple": "A network or file operation couldn't complete immediately.",
+      "detailed": "A non-blocking socket or file operation returned EAGAIN/EWOULDBLOCK. Use asyncio or retry the operation."
+    },
+    "ChildProcessError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "ChildProcessError",
+        "No child processes"
+      ],
+      "root_cause_template": "A child process operation failed — no child process exists.",
+      "simple": "An operation on a subprocess failed.",
+      "detailed": "os.wait() or related functions found no child process to wait for. Check that the subprocess was actually started."
+    },
+    "DeprecationWarning": {
+      "category": "Warning",
+      "severity": "Low",
+      "language": "Python",
+      "patterns": [
+        "DeprecationWarning",
+        "deprecated",
+        "will be removed in a future version"
+      ],
+      "root_cause_template": "Using a deprecated API that will be removed in a future Python version.",
+      "simple": "You're using an old feature that Python plans to remove.",
+      "detailed": "The called API is deprecated. Update to the recommended replacement shown in the warning message."
+    },
+    "FutureWarning": {
+      "category": "Warning",
+      "severity": "Low",
+      "language": "Python",
+      "patterns": [
+        "FutureWarning"
+      ],
+      "root_cause_template": "Behavior of this operation will change in a future version.",
+      "simple": "This code might work differently in future Python versions.",
+      "detailed": "A FutureWarning signals that current behavior will change in a future release. Update your code now to avoid surprises later."
+    },
+    "ResourceWarning": {
+      "category": "Warning",
+      "severity": "Low",
+      "language": "Python",
+      "patterns": [
+        "ResourceWarning",
+        "unclosed file",
+        "unclosed socket"
+      ],
+      "root_cause_template": "A resource (file, socket) was not properly closed before being garbage collected.",
+      "simple": "You forgot to close a file or network connection.",
+      "detailed": "Python detected an unclosed resource. Use 'with' statements (context managers) to ensure files and sockets are always closed."
+    },
+    "pickle.UnpicklingError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "UnpicklingError",
+        "invalid load key",
+        "could not unpickle"
+      ],
+      "root_cause_template": "The pickle file is corrupt, was saved with an incompatible Python version, or is not a pickle file at all.",
+      "simple": "The file you're trying to load with pickle is broken or incompatible.",
+      "detailed": "pickle.load() encountered an invalid or unreadable byte sequence. Never unpickle data from untrusted sources — it can execute arbitrary code."
+    },
+    "ssl.SSLError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "SSLError",
+        "certificate verify failed",
+        "CERTIFICATE_VERIFY_FAILED",
+        "SSL: WRONG_VERSION_NUMBER",
+        "handshake failure"
+      ],
+      "root_cause_template": "SSL/TLS handshake or certificate verification failed.",
+      "simple": "A secure connection failed — usually a certificate problem.",
+      "detailed": "The SSL certificate is invalid, expired, self-signed, or the hostname doesn't match. You can disable verification with ssl=False (not recommended for production) or install certifi."
+    },
+    "subprocess.CalledProcessError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "CalledProcessError",
+        "returned non-zero exit status",
+        "subprocess.*exited with"
+      ],
+      "root_cause_template": "A subprocess exited with a non-zero return code.",
+      "simple": "A command your program ran failed.",
+      "detailed": "subprocess.check_call() or check_output() raised because the child process returned a failure exit code. Inspect CalledProcessError.stderr for details."
+    },
+    "requests.exceptions.ConnectionError": {
+      "category": "Runtime Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "requests.exceptions.ConnectionError",
+        "Failed to establish a new connection",
+        "Max retries exceeded",
+        "Name or service not known",
+        "getaddrinfo failed"
+      ],
+      "root_cause_template": "Cannot connect to '{url}' — server unreachable, DNS failed, or network is down.",
+      "simple": "Your program can't reach the server. Check your internet or the server URL.",
+      "detailed": "The requests library failed to connect. DNS resolution failed or the host is unreachable. Verify the URL, check firewall rules, and test network connectivity."
+    },
+    "requests.exceptions.HTTPError": {
+      "category": "Runtime Error",
+      "severity": "Medium",
+      "language": "Python",
+      "patterns": [
+        "HTTPError",
+        "4[0-9][0-9] Client Error",
+        "5[0-9][0-9] Server Error",
+        "400 Bad Request",
+        "401 Unauthorized",
+        "403 Forbidden",
+        "404 Not Found",
+        "500 Internal Server Error"
+      ],
+      "root_cause_template": "HTTP {code} error from the server.",
+      "simple": "The server returned an error response.",
+      "detailed": "The HTTP response had a 4xx (client error) or 5xx (server error) status code. Check the status code and response body for details."
+    },
+    "custom_module_error": {
+      "category": "Dependency Error",
+      "severity": "High",
+      "language": "Python",
+      "patterns": [
+        "No module named 'STT'",
+        "No module named 'testttss'",
+        "No module named 'dummyclient'"
+      ],
+      "root_cause_template": "Custom local module '{module}' not found. It must exist as a .py file in the same directory or be added to sys.path.",
+      "simple": "A local Python file that this code depends on is missing from the project folder.",
+      "detailed": "This module is a custom local file, not a pip package. Make sure '{module}.py' exists in the same directory as the file trying to import it.",
+      "fix_template": "Ensure '{module}.py' exists in the project directory, or add its path: import sys; sys.path.insert(0, '/path/to/module')"
+    }
+  }
+}
